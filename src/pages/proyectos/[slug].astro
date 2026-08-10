@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'puente-atlantico' } },
+    { params: { slug: 'planta-solar' } },
+    { params: { slug: 'metro-linea-7' } },
+  ];
+}
+const { slug } = Astro.params;
+
+// 🔥 Base de datos simulada
+const proyectos = {
+  "puente-atlantico": {
+    titulo: "Inspección de cubiertas y terrazas",
+    descripcion: "Puente atirantado sobre el Canal de Panamá...",
+    imagenes: [
+      "https://spar2099.sirv.com/pimat/tejado%20(2).jpeg",
+      "https://spar2099.sirv.com/pimat/tejado%20(1).jpeg",
+      "https://spar2099.sirv.com/pimat/tejado%20(3).jpeg",
+      "https://spar2099.sirv.com/pimat/tejado%20(4).jpeg",
+      "https://spar2099.sirv.com/pimat/tejado%20(5).jpeg",
+    ],
+  },
+  "planta-solar": {
+    titulo: "Levantamientos topográficos",
+    descripcion: "Planta de energía renovable...",
+    imagenes: [
+      "https://spar2099.sirv.com/pimat/topografia%20(3).jpeg",
+      "https://spar2099.sirv.com/pimat/topografia%20(2).jpeg",
+      "https://spar2099.sirv.com/pimat/topografia%20(1).jpeg",
+    ],
+  },
+  "metro-linea-7": {
+    titulo: "Modelación 3D",
+    descripcion: "Sistema de transporte urbano...",
+    // ⚠️ Recomendado: convierte estos .avi a .mp4 (H.264) para que se reproduzcan en el navegador.
+    imagenes: [
+      "https://spar2099.sirv.com/pimat/3d%20(1).mp4",
+      "https://spar2099.sirv.com/pimat/3d%20(2).mp4",
+    ],
+  }
+};
+
+const proyecto = proyectos[slug];
+
+// Detecta si cada archivo es video o imagen según su extensión
+const extensionesVideo = ["mp4", "webm", "mov", "avi", "ogg"];
+
+function esVideo(url: string) {
+  const limpio = url.split("?")[0].toLowerCase();
+  const ext = limpio.substring(limpio.lastIndexOf(".") + 1);
+  return extensionesVideo.includes(ext);
+}
+---
+
+<Layout title={proyecto.titulo}>
+  <Header />
+
+  <!-- HERO estilo Valorant -->
+  <section class="pt-32 pb-20 bg-aecom-gray text-white min-h-screen flex items-center">
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+      <div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          {proyecto.titulo}
+        </h1>
+        <p class="text-lg text-gray-300">
+          {proyecto.descripcion}
+        </p>
+        <button 
+          onclick="history.back()" 
+          class="mt-8 bg-white text-black px-6 py-2 rounded-md font-semibold hover:bg-gray-200 transition">
+          ← Volver
+        </button>
+      </div>
+
+      <!-- 🔥 CARRUSEL DE IMÁGENES Y VIDEOS -->
+      <div class="relative overflow-hidden rounded-xl shadow-lg bg-white">
+
+        <div id="proyecto-track" class="flex transition-transform duration-500">
+          {proyecto.imagenes.map((media) => (
+            <div class="w-full flex-shrink-0">
+              <div class="w-full h-64 sm:h-80 lg:h-96 relative bg-black">
+                {esVideo(media) ? (
+                  <video
+                    src={media}
+                    class="w-full h-full object-contain"
+                    controls
+                    playsinline
+                  />
+                ) : (
+                  <img
+                    src={media}
+                    class="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- BOTONES -->
+        <button id="prevProyecto" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2 shadow rounded-full z-10">‹</button>
+        <button id="nextProyecto" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2 shadow rounded-full z-10">›</button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const track = document.getElementById("proyecto-track");
+  if (!track) return;
+
+  const originalItems = Array.from(track.children);
+  const visible = 1;
+  let index = visible;
+
+  function setupClones() {
+    track.innerHTML = "";
+    originalItems.forEach(el => track.appendChild(el));
+
+    const clonesBefore = originalItems.slice(-visible).map(el => el.cloneNode(true));
+    const clonesAfter = originalItems.slice(0, visible).map(el => el.cloneNode(true));
+
+    clonesBefore.forEach(clone => track.prepend(clone));
+    clonesAfter.forEach(clone => track.appendChild(clone));
+
+    index = visible;
+    updateCarousel(false);
+  }
+
+  function updateCarousel(animate = true) {
+    const percentage = 100 / visible;
+    track.style.transition = animate ? "transform 0.5s" : "none";
+    track.style.transform = `translateX(-${index * percentage}%)`;
+
+    // Pausar todos los videos al cambiar de slide
+    track.querySelectorAll("video").forEach((v) => v.pause());
+  }
+
+  function nextSlide() {
+    index++;
+    updateCarousel();
+
+    if (index >= track.children.length - visible) {
+      setTimeout(() => {
+        index = visible;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  function prevSlide() {
+    index--;
+    updateCarousel();
+
+    if (index <= 0) {
+      setTimeout(() => {
+        index = track.children.length - (visible * 2);
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  document.getElementById("nextProyecto").onclick = nextSlide;
+  document.getElementById("prevProyecto").onclick = prevSlide;
+
+  setupClones();
+
+  window.addEventListener("resize", () => {
+    setupClones();
+  });
+
+});
+</script>

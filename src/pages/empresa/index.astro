@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EmpresaHero from '../../components/EmpresaHero.astro';
+import Valores from '../../components/Valores.astro';
+---
+
+<Layout title="Quiénes Somos">
+  <Header />
+  <EmpresaHero />
+
+  <!-- Historia -->
+<section class="py-20">
+<div class="container mx-auto px-4 max-w-4xl">
+
+  <div class="bg-black/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.25)] p-10 relative overflow-hidden">
+      
+      <p class="text-aecom-dark text-lg leading-relaxed mb-6 text-justify">
+        PIMAT SAS es una empresa colombiana de ingeniería y consultoría especializada 
+en gestión del riesgo de desastres, medio ambiente, topografía y obra civil. 
+Integramos tecnologías de vanguardia como fotogrametría con drones (UAV) y 
+Sistemas de Información Geográfica (SIG) con el conocimiento técnico de 
+profesionales altamente calificados, para brindar soluciones integrales al sector 
+público y privado. 
+Nuestra experiencia abarca estudios de amenaza, vulnerabilidad y riesgo por 
+fenómenos naturales, consultoría ambiental, instrumentos de planificación territorial, 
+construcción y mantenimiento de obras civiles, diseño estructural, y gestión de 
+seguridad y salud en el trabajo. Operamos con rigor técnico, compromiso ético y 
+responsabilidad social, en cumplimiento de la normatividad legal vigente.
+      </p>
+      <h2 class="text-3xl font-bold text-center mb-8">MISIÓN</h2>
+      <p class="text-aecom-dark text-lg leading-relaxed text-justify">
+        Desarrollar proyectos de consultoría e ingeniería con altos estándares técnicos y 
+éticos, integrando soluciones especializadas en gestión del riesgo de desastres, 
+estudios ambientales, topografía con tecnología UAV y obras civiles para el sector 
+público y privado. Actuamos con confiabilidad, eficiencia y responsabilidad social, 
+estableciendo relaciones cercanas con nuestros clientes para responder a sus 
+necesidades específicas, generando valor para las comunidades, el entorno y 
+nuestros colaboradores. 
+      </p>
+      <h2 class="text-3xl font-bold text-center mb-8">VISIÓN</h2>
+      <p class="text-aecom-dark text-lg leading-relaxed text-justify">
+       PIMAT SAS, se distinguirá en el año 2.030 como una empresa líder a nivel regional 
+en el sector de ingeniería y construcción con proyectos que cumplen con los tiempos 
+establecidos, desarrolladas en condiciones de alta calidad, seguras, sanas y 
+respetuosas con la comunidad, el medio ambiente y los trabajadores de la empresa. 
+      </p>
+    </div>
+  </div>
+  </section>
+
+  <Valores />
+
+  <!-- CARRUSEL -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <h2 class="text-3xl font-bold text-center mb-12">Liderazgo</h2>
+
+      <div class="relative max-w-5xl mx-auto overflow-hidden">
+
+        <!-- TRACK -->
+        <div id="carousel-track" class="flex transition-transform duration-500">
+
+          <!-- PERSONA 1 -->
+          <a href={`${import.meta.env.BASE_URL}empresa/kelly-mondragon`} class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 text-center block">
+            <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+              <img src="https://spar2099.sirv.com/pimat/JOHANNA%20CORPORATIVA.png" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-xl">Kelly Johanna Mondragon Ramirez</h3>
+            <p class="text-blue-600">CEO & Fundador</p>
+            <p class="text-sm text-gray-600 mt-2">Ingeniera Ambiental</p>
+          </a>
+
+          <!-- PERSONA 2 -->
+          <a href={`${import.meta.env.BASE_URL}empresa/steven-morales`} class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 text-center block">
+            <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+              <img src="https://spar2099.sirv.com/pimat/STEVEN%20MORALES%20CORPORATIVO%201.png" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-xl">Steven Morales Alarcon</h3>
+            <p class="text-blue-600">Fundador</p>
+            <p class="text-sm text-gray-600 mt-2">Urbanista en formación</p>
+          </a>
+
+          <!-- PERSONA 3 -->
+          <a href={`${import.meta.env.BASE_URL}empresa/andres-baquero`} class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 text-center block">
+            <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+              <img src="https://spar2099.sirv.com/pimat/BAQUERO%20CORPORATIVO.png" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-xl">Andres Mauricio Baquero Ramírez</h3>
+            <p class="text-blue-600">Director Técnico</p>
+            <p class="text-sm text-gray-600 mt-2">Ingeniero Civil</p>
+          </a>
+
+          
+          <!-- PERSONA 5 -->
+          <a href={`${import.meta.env.BASE_URL}empresa/stiven-mondragon`} class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 text-center block">
+            <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
+              <img src="https://spar2099.sirv.com/pimat/1000461569.png" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-bold text-xl">Helberth Stiven Mondragón Ramírez</h3>
+            <p class="text-blue-600">Analista de Sistemas y Desarrollo Digital</p>
+            <p class="text-sm text-gray-600 mt-2">Ingeniero de Sistemas</p>
+          </a>
+
+        </div>
+
+        <!-- BOTONES -->
+        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 rounded-full z-10">‹</button>
+        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow px-3 py-2 rounded-full z-10">›</button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const track = document.getElementById("carousel-track");
+  const originalItems = Array.from(track.children);
+
+  function getVisibleItems() {
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  }
+
+  let visible = getVisibleItems();
+  let index = visible;
+
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  function setupCarousel() {
+    track.innerHTML = "";
+
+    originalItems.forEach(el => track.appendChild(el));
+
+    visible = getVisibleItems();
+
+    const clonesBefore = originalItems.slice(-visible).map(el => el.cloneNode(true));
+    const clonesAfter = originalItems.slice(0, visible).map(el => el.cloneNode(true));
+
+    clonesBefore.forEach(clone => track.prepend(clone));
+    clonesAfter.forEach(clone => track.appendChild(clone));
+
+    index = visible;
+    updateCarousel(false);
+
+    // 🔥 FIX CLICK EN CLONES
+    track.querySelectorAll("a").forEach(a => {
+      a.style.pointerEvents = "auto";
+    });
+  }
+
+  function updateCarousel(animate = true) {
+    track.style.transition = animate ? "transform 0.5s" : "none";
+    track.style.transform = `translateX(-${index * (100 / visible)}%)`;
+  }
+
+  function nextSlide() {
+    index++;
+    updateCarousel();
+
+    if (index >= track.children.length - visible) {
+      setTimeout(() => {
+        index = visible;
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  function prevSlide() {
+    index--;
+    updateCarousel();
+
+    if (index <= 0) {
+      setTimeout(() => {
+        index = track.children.length - (visible * 2);
+        updateCarousel(false);
+      }, 500);
+    }
+  }
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  setupCarousel();
+
+  window.addEventListener("resize", setupCarousel);
+});
+</script>
+
+  <Footer />
+</Layout>

@@ -1,14 +1,42 @@
 ---
-import '../styles/global.css'
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Ingeniería experta para proyectos del futuro" } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pimat SAS</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | IngenieríaPlus</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="https://spar2099.sirv.com/pimat/Logo%20claro.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-sans antialiased relative text-gray-900">
+
+  <!-- 🔥 FONDO REAL -->
+  <div class="fixed inset-0 -z-0 pointer-events-none">
+    
+    <img 
+      src="https://spar2099.sirv.com/pimat/Gemini_Generated_Image_vbnrkyvbnrkyvbnr.png"
+      alt="Fondo curvas"
+      class="w-full h-full object-cover opacity-10"
+    />
+
+  </div>
+
+  <!-- CONTENIDO -->
+  <main class="relative z-10">
     <slot />
-  </body>
+  </main>
+
+</body>
 </html>

@@ -1,0 +1,34 @@
+<section class="relative min-h-[90vh] md:h-screen flex items-center overflow-hidden">
+  <!-- Background con gradiente y overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-orange-700 via-aecom-orange/90 to-aecom-lightorange/80 z-10"></div>
+  
+  <!-- Imagen de fondo -->
+  <div class="absolute inset-0 bg-cover bg-center scale-110" 
+       style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3'); background-size: cover;">
+  </div>
+  
+  <!-- Contenido -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white animate-fade-in">
+    <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl animate-slide-up">
+      Ingeniería que <span class="text-aecom-blue">construye</span> el futuro
+    </h1>
+    <p class="text-xl md:text-2xl mt-6 max-w-2xl text-gray-100 animate-slide-up" style="animation-delay: 0.2s">
+      Soluciones integrales para infraestructura, energía y desarrollo sostenible en Latinoamérica.
+    </p>
+    <div class="mt-10 flex gap-4 flex-wrap animate-slide-up" style="animation-delay: 0.4s">
+      <a href={`${import.meta.env.BASE_URL}contacto`} class="bg-aecom-lightorange hover:bg-orange-700 px-8 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 inline-block">
+        Cotiza tu proyecto
+      </a>
+      <a href={`${import.meta.env.BASE_URL}servicios`} class="border-2 border-white hover:bg-white/10 px-8 py-3 rounded-md font-semibold transition-all duration-300 inline-block">
+        Nuestros servicios
+      </a>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m7-7v14" />
+    </svg>
+  </div>
+</section>

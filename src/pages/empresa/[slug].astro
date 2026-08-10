@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'kelly-mondragon' } },
+    { params: { slug: 'steven-morales' } },
+    { params: { slug: 'andres-baquero' } },
+    { params: { slug: 'stiven-mondragon' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const equipo = {
+  "kelly-mondragon": {
+    nombre: "Kelly Johanna Mondragón Ramírez",
+    cargo: "CEO & Fundador",
+    descripcion: `Ingeniera Ambiental, especialista en Prevención, Reducción y Atención de 
+Desastres, con más de 6 años de experiencia en la estructuración, implementación 
+y seguimiento de instrumentos de gestión del riesgo, planificación territorial y 
+gestión ambiental en el sector público y privado. Experta en formulación y 
+evaluación de Planes de Gestión del Riesgo (PMGRD), Estrategias de Respuesta a 
+Emergencias (EMRE), Planes de Manejo Ambiental (PMA) y componentes 
+ambientales de planes de desarrollo. 
+Cuenta con sólida trayectoria en la articulación interinstitucional, asistencia 
+técnica a entes territoriales y revisión de instrumentos de ordenamiento territorial 
+(POT, PBOT, EOT), con énfasis en la incorporación de determinantes ambientales y 
+análisis del riesgo de desastres. Experiencia en implementación de sistemas SG
+SST, evaluación de riesgos (IPER), auditoría y cumplimiento normativo. 
+Se destaca por su capacidad en análisis técnico, elaboración de conceptos 
+especializados, gestión de información territorial y apoyo en procesos de toma de 
+decisiones, contribuyendo al desarrollo sostenible, la resiliencia territorial y la 
+gestión integral del riesgo`,
+    imagen: "https://spar2099.sirv.com/pimat/JOHANNA%20CORPORATIVA.png",
+  },
+  "steven-morales": {
+    nombre: "Steven Morales Alarcon",
+    cargo: "Fundador",
+    descripcion:`Urbanista en formación con énfasis en análisis territorial, Sistemas de Información 
+Geográfica (SIG) y gestión urbana, con experiencia en estructuración de proyectos, 
+análisis cartográfico y articulación operativa en contextos ambientales y de 
+ingeniería. Cuenta con habilidades técnicas en procesamiento y análisis espacial 
+mediante herramientas como ArcGIS, fotogrametría con drones y sistemas de 
+información territorial, aplicadas a diagnósticos, formulación de proyectos y toma 
+de decisiones estratégicas. 
+Posee experiencia en la elaboración de estudios técnicos, interpretación de 
+información geoespacial, gestión documental y coordinación interinstitucional, 
+contribuyendo al desarrollo eficiente de proyectos con enfoque territorial. 
+Complementa su perfil con una sólida trayectoria en gestión comercial, liderazgo 
+de equipos y optimización de procesos, lo que fortalece sus competencias en 
+planificación, negociación y ejecución de iniciativas complejas. 
+Orientado a la planificación urbana sostenible, diseño de espacios públicos y 
+gestión integral del territorio, con enfoque en la generación de soluciones 
+funcionales, inclusivas y basadas en evidencia, que promuevan el desarrollo 
+equilibrado y centrado en las dinámicas sociales y espaciales  `,
+    imagen: "https://spar2099.sirv.com/pimat/STEVEN%20MORALES%20CORPORATIVO%201.png",
+  },
+
+
+  "andres-baquero": {
+  nombre: "Andres Mauricio Baquero Ramírez",
+  cargo: "Fundador",
+  descripcion: `Ingeniero Civil con 13 años de experiencia en dirección, ejecución e interventoría de proyectos de infraestructura, con énfasis en construcción de vivienda (VIS) mediante sistemas industrializados y obras civiles urbanas.
+
+Cuenta con sólida trayectoria en la gestión integral de proyectos, incluyendo planeación, control de cronogramas, cuantificación de obra, supervisión técnica y administración de recursos.
+
+Posee experiencia certificada en construcción de edificaciones de mediana altura (4 y 5 pisos), dirección de obras de vivienda unifamiliar y multifamiliar, así como en interventoría y supervisión de actividades de pavimentación asfáltica.
+
+Experto en control técnico de obra, seguimiento de especificaciones constructivas, manejo de bitácoras e informes y coordinación de equipos multidisciplinarios.
+
+Se destaca por su capacidad en optimización de procesos constructivos, uso de herramientas como AutoCAD para modulación estructural y control eficiente de tiempos y costos.
+
+Formación académica con reconocimiento de excelencia (tesis laureada), con enfoque en investigación aplicada y orientación a la calidad, cumplimiento normativo y eficiencia operativa`,
+  imagen: "https://spar2099.sirv.com/pimat/BAQUERO%20CORPORATIVO.png",
+},
+
+
+  
+
+  "stiven-mondragon": {
+    nombre: "Helberth Stiven Mondragón Ramírez",
+    cargo: "Director de sistema",
+    descripcion: `Ingeniero de Sistemas titulado de la Universidad Cooperativa de Colombia, con experiencia en el desarrollo de soluciones informáticas y participación en proyectos de investigación orientados al análisis predictivo mediante redes neuronales. Cuenta con conocimientos en gestión de procesos tecnológicos, administración de sistemas y elaboración de documentación técnica, aportando al fortalecimiento de entornos organizacionales tanto en el sector público como privado.
+
+Ha participado en el diseño, implementación y optimización de sistemas de información, así como en la generación de reportes técnicos, manuales de usuario y procesos de soporte TI. Posee habilidades en desarrollo front-end con tecnologías como HTML, CSS y JavaScript, además del uso de herramientas de control de versiones y entornos de desarrollo colaborativo.
+
+Complementa su perfil con experiencia en diseño de piezas gráficas y contenido visual orientado a entornos digitales y corporativos, participando en la creación de material publicitario y técnico (como piezas informativas, presentaciones y recursos visuales), lo que le permite integrar la tecnología con la comunicación efectiva y el diseño.
+
+Se destaca por su capacidad para estructurar y documentar procesos tecnológicos, gestionar información administrativa y apoyar la toma de decisiones mediante el análisis técnico. Cuenta con experiencia en acompañamiento académico en áreas de matemáticas y física, facilitando la comprensión de conceptos complejos a través de metodologías claras y adaptadas a diferentes estilos de aprendizaje.
+
+Se caracteriza por su compromiso ético, habilidades de comunicación técnica, trabajo en equipo y enfoque en la mejora continua, contribuyendo al desarrollo de soluciones eficientes e innovadoras en contextos tecnológicos`,
+    imagen: "https://spar2099.sirv.com/pimat/1000461569.png",
+  }
+};
+
+const persona = equipo[slug];
+
+if (!persona) {
+  return Astro.redirect('/empresa');
+}
+---
+
+<Layout title={persona.nombre}>
+  <Header />
+
+  <section class="pt-32 pb-20 bg-aecom-gray text-white min-h-screen flex items-center">
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+      <div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          {persona.nombre}
+        </h1>
+        <p class="text-xl text-aecom-lightorange mb-4">
+          {persona.cargo}
+        </p>
+        <div class="lg:pr-10 text-justify leading-7 text-gray-200 text-[16.5px] space-y-4">
+  {persona.descripcion.split('. ').map((frase) => (
+    <p>{frase.trim()}.</p>
+  ))}
+</div>
+
+  <button 
+    onclick="history.back()" 
+    class="mt-8 bg-white text-black px-6 py-2 rounded-md font-semibold hover:bg-gray-200 transition">
+    ← Volver
+  </button>
+</div>
+
+      <div>
+        <img 
+          src={persona.imagen} 
+          class="w-full max-w-md mx-auto rounded-xl shadow-lg object-cover"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

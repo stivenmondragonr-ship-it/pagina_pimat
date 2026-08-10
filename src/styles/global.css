@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@theme {
+  --color-aecom-blue: #034472;
+  --color-aecom-lightblue: #0066CC;
+  --color-aecom-white: #F5F5F5;
+  --color-aecom-dark: #1A1A1A;
+  --color-aecom-orange: #F15A24;
+  --color-aecom-lightorange: #FCBB8D;
+  --color-aecom-gray: #6D6664;
+  --color-aecom-lightgray: #a8a09e;
+
+  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+
+  --animate-fade-in: fadeIn 0.8s ease-in-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+main {
+  min-height: 80vh;
+}

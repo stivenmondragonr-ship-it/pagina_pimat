@@ -1,12 +1,50 @@
 ---
-
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServiciosGrid from '../components/ServiciosGrid.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-  <h1 class="text-3xl font-bold">Hola Pimat</h1>
+<Layout title="Inicio">
+  <Header />
+  <Hero />
+  
+  
+  <!-- Sección de estadísticas -->
+  <section class="py-16 bg-orange-900 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 gap-8 text-center">
+      <div>
+        <div class="text-4xl font-bold">15+</div>
+        <div class="text-orange-200 mt-2">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold">200+</div>
+        <div class="text-orange-200 mt-2">Proyectos completados</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold">50+</div>
+        <div class="text-orange-200 mt-2">Ingenieros expertos</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold">12</div>
+        <div class="text-orange-200 mt-2">Países con presencia</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA final -->
+  <section class="py-20 bg-white/10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900">¿Listo para tu próximo proyecto?</h2>
+      <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+        Nuestro equipo está listo para ofrecerte soluciones técnicas personalizadas.
+      </p>
+      <a href="/contacto" class="inline-block mt-8 bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-3 rounded-md transition">
+        Solicita una asesoría
+      </a>
+    </div>
+  </section>
+  
+  <Footer />
 </Layout>
