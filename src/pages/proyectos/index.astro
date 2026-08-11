@@ -43,7 +43,7 @@ const proyectos = [
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {proyectos.map((proyecto) => (
-          <a href={`/proyectos/${proyecto.slug}`} 
+          <a href={`${import.meta.env.BASE_URL}proyectos/${proyecto.slug}`} 
              class="group block overflow-hidden rounded-xl shadow-lg">
 
             <div class="h-64 overflow-hidden">

@@ -1,0 +1,1 @@
+"pimatsas.com" | Out-File -FilePath public\CNAME -Encoding ascii -NoNewline
