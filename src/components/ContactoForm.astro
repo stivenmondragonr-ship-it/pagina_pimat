@@ -35,13 +35,13 @@
         <label class="block text-gray-700 font-semibold mb-2" for="servicio">Servicio de interés *</label>
         <select id="servicio" name="servicio" required 
                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-          <option value="">Asesoría y consultoría ambiental</option>
-          <option value="civil">Gestión del riesgo de deseastres </option>
-          <option value="electrica">Topografía - Geomática</option>
-          <option value="ambiental">Elaboración y seguimiento SG-SST</option>
-          <option value="gestion">Fotogrametría con drones </option>
-          <option value="estructural">Servicio de asesoría urbanistica integral </option>
-          
+          <option value="" disabled selected>Selecciona un servicio</option>
+          <option value="ambiental">Asesoría y consultoría ambiental</option>
+          <option value="riesgo">Gestión del riesgo de desastres</option>
+          <option value="topografia">Topografía - Geomática</option>
+          <option value="sgsst">Elaboración y seguimiento SG-SST</option>
+          <option value="drones">Fotogrametría con drones</option>
+          <option value="urbanistica">Servicio de asesoría urbanística integral</option>
         </select>
       </div>
       
@@ -73,15 +73,21 @@
 
 <script>
   const form = document.getElementById("contacto-form") as HTMLFormElement;
-  const numeroWhatsApp = "573106961396"; // +57 310 6961396, sin +, sin espacios
+
+  // Agrega aquí todos los números a los que quieres que llegue el mensaje.
+  // Formato: código de país + número, sin "+", sin espacios, sin guiones.
+  const numerosWhatsApp: string[] = [
+    "573106961396", // morales
+    "573142115851", // baquero
+  ];
 
   const nombreServicio: Record<string, string> = {
-    civil: "Ingeniería Civil",
-    electrica: "Ingeniería Eléctrica",
-    ambiental: "Consultoría Ambiental",
-    gestion: "Gestión de Proyectos",
-    estructural: "Diseño Estructural",
-    automatizacion: "Automatización Industrial",
+    ambiental: "Asesoría y consultoría ambiental",
+    riesgo: "Gestión del riesgo de desastres",
+    topografia: "Topografía - Geomática",
+    sgsst: "Elaboración y seguimiento SG-SST",
+    drones: "Fotogrametría con drones",
+    urbanistica: "Servicio de asesoría urbanística integral",
   };
 
   form?.addEventListener("submit", (e) => {
@@ -103,7 +109,15 @@
     texto += `*Servicio de interés:* ${servicio}\n\n`;
     texto += `*Mensaje:*\n${mensaje}`;
 
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank");
+    const mensajeCodificado = encodeURIComponent(texto);
+
+    // Abre una pestaña de WhatsApp por cada número, con un pequeño
+    // desfase de tiempo para reducir el riesgo de bloqueo de popups.
+    numerosWhatsApp.forEach((numero, index) => {
+      const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, index * 400);
+    });
   });
 </script>
