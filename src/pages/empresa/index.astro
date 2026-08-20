@@ -115,12 +115,15 @@ respetuosas con la comunidad, el medio ambiente y los trabajadores de la empresa
     </div>
   </section>
 
-  <!-- SCRIPT -->
+ <!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
   const track = document.getElementById("carousel-track");
   const originalItems = Array.from(track.children);
+
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
 
   function getVisibleItems() {
     if (window.innerWidth < 640) return 1;
@@ -130,13 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let visible = getVisibleItems();
   let index = visible;
-
-  const nextBtn = document.getElementById("nextBtn");
-  const prevBtn = document.getElementById("prevBtn");
+  let isAnimating = false;
 
   function setupCarousel() {
     track.innerHTML = "";
-
     originalItems.forEach(el => track.appendChild(el));
 
     visible = getVisibleItems();
@@ -148,42 +148,53 @@ document.addEventListener("DOMContentLoaded", () => {
     clonesAfter.forEach(clone => track.appendChild(clone));
 
     index = visible;
-    updateCarousel(false);
 
-    // 🔥 FIX CLICK EN CLONES
+    // Posiciona sin animación (evita un "flash" al cargar o redimensionar)
+    track.style.transition = "none";
+    updateCarousel();
+
     track.querySelectorAll("a").forEach(a => {
       a.style.pointerEvents = "auto";
     });
   }
 
-  function updateCarousel(animate = true) {
-    track.style.transition = animate ? "transform 0.5s" : "none";
-    track.style.transform = `translateX(-${index * (100 / visible)}%)`;
+  function updateCarousel() {
+    const percentage = 100 / visible;
+    track.style.transform = `translateX(-${index * percentage}%)`;
+  }
+
+  function goToSlide(newIndex) {
+    if (isAnimating) return; // evita clics repetidos mientras anima
+    isAnimating = true;
+    track.style.transition = "transform 0.5s";
+    index = newIndex;
+    updateCarousel();
   }
 
   function nextSlide() {
-    index++;
-    updateCarousel();
-
-    if (index >= track.children.length - visible) {
-      setTimeout(() => {
-        index = visible;
-        updateCarousel(false);
-      }, 500);
-    }
+    goToSlide(index + 1);
   }
 
   function prevSlide() {
-    index--;
-    updateCarousel();
-
-    if (index <= 0) {
-      setTimeout(() => {
-        index = track.children.length - (visible * 2);
-        updateCarousel(false);
-      }, 500);
-    }
+    goToSlide(index - 1);
   }
+
+  // Se ejecuta EXACTAMENTE cuando termina la animación real (no un tiempo adivinado)
+  track.addEventListener("transitionend", () => {
+    isAnimating = false;
+
+    const total = track.children.length;
+
+    if (index >= total - visible) {
+      track.style.transition = "none";
+      index = visible;
+      updateCarousel();
+    } else if (index <= 0) {
+      track.style.transition = "none";
+      index = total - (visible * 2);
+      updateCarousel();
+    }
+  });
 
   nextBtn.addEventListener("click", nextSlide);
   prevBtn.addEventListener("click", prevSlide);

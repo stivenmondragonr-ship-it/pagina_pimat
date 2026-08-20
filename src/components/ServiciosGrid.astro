@@ -1,228 +1,146 @@
 ---
-
 const servicios = [
-  { titulo: "Asesoría y consultoría ambiental", descripcion: [ "Estudios de impacto Ambiental.", "Planes de ordenamiento y gestión ambiental.", 
-      "Procesos de planificación territorial en la estructuración de planes de desarrollo Municipal, Departamental y Distrital.", 
-      "Planes de adaptación a la guía ambiental PAGA.", "Planes de Manejo Ambiental PMA.",
-       "Planes de Gestión integral de Residuos Sólidos PGIRS.", "Diagnóstico Ambiental de Alternativas." 
-    ], 
-    icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_v2yuaov2yuaov2yu.png", 
-    color: "bg-gray-100" }, 
-
-
-  { titulo: "Gestión del riesgo de deseastres", 
-    descripcion: [ "Estudios de susceptibilidad, amenaza, vulnerabilidad y riesgo de desastres.", 
-    "Incorporación de la gestión de riesgos en POT u proyectos de inversión público-privado.", 
-    "Desarrollo de instrumentos de planificación municipal (PMGRD, EMRE y EMREc).", 
-    "Estudios en conocimiento y reducción del riesgo, evaluación de daños y manejo de emergencias.", 
-    "Talleres de capacitación y socialización." 
-  ], 
-  icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_ooodqhooodqhoood.png", 
-  color: "bg-yellow-100" }, 
-  
-  { titulo: "Topografía - Geomática", 
-  descripcion: [ " Levantamiento: Planimétrico, altimétrico, replanteo de puntos y ejes.", "Georreferenciación.", 
-      "Verificación de áreas y linderos.", "Cartografía temática.", 
-      "Integración topografía + SIG.", 
-      "Levantamientos para estudios hidrológicos y ambientales.", 
-      "Integración topografía + SIG + formulación de proyectos.", 
-      "Asesoría técnica en normativas y requisitos topográficos " 
-    ], 
-  icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_h500gih500gih50.png", 
-  color: "bg-green-100" }, 
-
-
-  { titulo: "Elaboración y seguimiento SG-SST", 
-  descripcion: [ "Diseño, implementación o mantenimiento del SG- SST.",
-     "Auditorías internas del SG-SST.", 
-     "Elaboración de matrices de peligros con priorización de riesgos.", 
-     "Diseño e implementación del Programa de Prevención y protección contra caídas.", 
-     "Reporte de ausentismo laboral.", 
-     "Elaboración Plan de emergencias, acompañamiento en Simulacros de Emergencias y Capacitación a brigadas de emergencia.",
-     ], 
-     icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_6bij4z6bij4z6bij.png", 
-     color: "bg-purple-100" },
-
-
-      { titulo: "Fotogrametría con drones", 
-      descripcion: [ "Fotogrametría con drones.", "Fotogrametría para proyectos inmobiliarios, inspecciones visuales o material promocional.", 
-        "Mapeo 2D con Drones (ortomosaico).", 
-        "Elaboración de Modelo Digital de Elevaciones DEM", 
-        "Modulado 3D simplicado (nubes de puntos o modelos texturizados)", 
-        "Mediciones y cálculo de áreas", 
-        "Seguimiento de proyectos a obras de construcción", 
-        "Inspecciones de áreas de tejados, torres o zonas de difícil acceso", 
-        "Levantamiento topográco asistido con drone (básico)", 
-        "Fotografía panorámica y videos aéreos promocionales", 
-        "Monitoreo de cultivos (Nivel inicial)", 
-        "Servicios personalizados: Adaptación a las necesidades especícas del cliente según el proyecto." 
-      ], 
-      icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_z8ic0kz8ic0kz8i.png", 
-      color: "bg-red-100" },
-      
-      
-      { titulo: "Servicio de asesoría urbanistica integral", 
-      descripcion: [ "Trámite y gestión de licencias urbanísticas.", 
-        "Formulación y estructuración de planes parciales.", 
-        "Avalúos prediales.", "Conceptos de norma urbanística.",
-         "Acompañamiento en procesos de desarrollo urbano.", 
-        ], 
-        icono: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_op4qo4op4qo4op4q.png", 
-        color: "bg-indigo-100" }
+  {
+    titulo: "Consultoría ambiental",
+    icono: "🌱",
+    descripcion: [
+      "Estudios de impacto Ambiental.",
+      "Planes de ordenamiento y gestión ambiental.",
+      "Procesos de planificación territorial en la estructuración de planes de desarrollo Municipal, Departamental y Distrital.",
+      "Planes de adaptación a la guía ambiental PAGA.",
+      "Planes de Manejo Ambiental PMA.",
+      "Planes de Gestión integral de Residuos Sólidos PGIRS.",
+      "Diagnóstico Ambiental de Alternativas."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_v2yuaov2yuaov2yu.png",
+    color: "aecom-lightorange"
+  },
+  {
+    titulo: "Gestión del riesgo de desastres",
+    icono: "⚠️",
+    descripcion: [
+      "Estudios de susceptibilidad, amenaza, vulnerabilidad y riesgo de desastres.",
+      "Incorporación de la gestión de riesgos en POT u proyectos de inversión público-privado.",
+      "Desarrollo de instrumentos de planificación municipal (PMGRD, EMRE y EMREc).",
+      "Estudios en conocimiento y reducción del riesgo, evaluación de daños y manejo de emergencias."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_ooodqhooodqhoood.png",
+    color: "aecom-orange"
+  },
+  {
+    titulo: "Topografía y geomática",
+    icono: "📐",
+    descripcion: [
+      "Levantamiento: Planimétrico, altimétrico, replanteo de puntos y ejes.",
+      "Georreferenciación.",
+      "Verificación de áreas y linderos.",
+      "Cartografía temática.",
+      "Integración topografía + SIG.",
+      "Levantamientos para estudios hidrológicos y ambientales.",
+      "Asesoría técnica en normativas y requisitos topográficos."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_h500gih500gih50.png",
+    color: "aecom-blue"
+  },
+  {
+    titulo: "Elaboración y seguimiento SG-SST",
+    icono: "🦺",
+    descripcion: [
+      "Diseño, implementación o mantenimiento del SG-SST.",
+      "Auditorías internas del SG-SST.",
+      "Elaboración de matrices de peligros con priorización de riesgos.",
+      "Diseño e implementación del Programa de Prevención y protección contra caídas.",
+      "Elaboración Plan de emergencias, acompañamiento en Simulacros de Emergencias y Capacitación a brigadas de emergencia."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_6bij4z6bij4z6bij.png",
+    color: "aecom-lightblue"
+  },
+  {
+    titulo: "Fotogrametría con drones",
+    icono: "🛩️",
+    descripcion: [
+      "Fotogrametría para proyectos inmobiliarios, inspecciones visuales o material promocional.",
+      "Mapeo 2D con Drones (ortomosaico).",
+      "Elaboración de Modelo Digital de Elevaciones DEM.",
+      "Modelado 3D simplificado (nubes de puntos o modelos texturizados).",
+      "Seguimiento de proyectos a obras de construcción.",
+      "Inspecciones de áreas de tejados, torres o zonas de difícil acceso.",
+      "Monitoreo de cultivos (Nivel inicial)."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_z8ic0kz8ic0kz8i.png",
+    color: "aecom-orange"
+  },
+  {
+    titulo: "Asesoría urbanística integral",
+    icono: "🏙️",
+    descripcion: [
+      "Trámite y gestión de licencias urbanísticas.",
+      "Formulación y estructuración de planes parciales.",
+      "Avalúos prediales.",
+      "Conceptos de norma urbanística.",
+      "Acompañamiento en procesos de desarrollo urbano."
+    ],
+    foto: "https://spar2099.sirv.com/pimat/Gemini_Generated_Image_op4qo4op4qo4op4q.png",
+    color: "aecom-lightorange"
+  }
 ];
+
+// Mapa de clases COMPLETAS y estáticas por color, para que Tailwind
+// pueda detectarlas al escanear el archivo (las clases armadas
+// dinámicamente con template strings no las detecta).
+const colorStyles = {
+  "aecom-orange": { badge: "bg-aecom-orange", halo: "bg-aecom-orange/15", dot: "bg-aecom-orange" },
+  "aecom-lightorange": { badge: "bg-aecom-lightorange", halo: "bg-aecom-lightorange/15", dot: "bg-aecom-lightorange" },
+  "aecom-blue": { badge: "bg-aecom-blue", halo: "bg-aecom-blue/15", dot: "bg-aecom-blue" },
+  "aecom-lightblue": { badge: "bg-aecom-lightblue", halo: "bg-aecom-lightblue/15", dot: "bg-aecom-lightblue" },
+};
 ---
 
+<section id="servicios" class="py-20  overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-<section class="py-20 bg-gray/90">
-  <div class="container mx-auto px-4 md:px-6">
+    
 
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-      Servicios de Ingeniería Especializada
-    </h2>
+    <div class="space-y-16 md:space-y-24">
+      {servicios.map((servicio, i) => (
+        <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
 
-    <div class="relative overflow-hidden max-w-6xl mx-auto">
+          <!-- IMAGEN -->
+          <div
+            class:list={[
+              "relative",
+              i % 2 === 1 ? "md:order-2" : "md:order-1",
+            ]}
+          >
+            <div class={`absolute -inset-3 md:-inset-5 rounded-[2.5rem] ${colorStyles[servicio.color].halo} -z-10`}></div>
+            <img
+              src={servicio.foto}
+              alt={servicio.titulo}
+              class="w-full h-64 sm:h-80 md:h-96 object-cover rounded-3xl shadow-xl"
+              loading="lazy"
+            />
+          </div>
 
-      <!-- TRACK -->
-      <div id="servicios-track" class="flex transition-transform duration-500">
-
-        {servicios.map((servicio) => (
-          <div class="w-full flex-shrink-0 px-3">
-
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden servicio-card">
-
-              <!-- HEADER -->
-              <div class="cursor-pointer servicio-header">
-
-                <!-- IMAGEN A PANTALLA COMPLETA DE LA TARJETA -->
-                <div class="w-full h-64 sm:h-80 lg:h-96 relative bg-white">
-                  <img 
-                    src={servicio.icono}
-                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-
-                <div class="p-4 text-center">
-                  <h3 class="text-base md:text-lg font-bold">
-                    {servicio.titulo}
-                  </h3>
-                </div>
-
-              </div>
-
-              <!-- CONTENIDO -->
-              <div class="contenido max-h-0 overflow-hidden transition-all duration-500 px-5">
-                <ul class="list-disc pl-5 text-sm text-gray-600 space-y-1 pb-4">
-                  {servicio.descripcion.map(item => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
+          <!-- TEXTO -->
+          <div class:list={[i % 2 === 1 ? "md:order-1" : "md:order-2"]}>
+            <div class={`inline-flex items-center gap-3 ${colorStyles[servicio.color].badge} text-white px-5 py-3 rounded-xl font-bold text-lg md:text-xl mb-5 shadow-md`}>
+              <span class="text-2xl leading-none">{servicio.icono}</span>
+              <span>{servicio.titulo}</span>
             </div>
 
+            <ul class="space-y-2.5">
+              {servicio.descripcion.map((item) => (
+                <li class="flex items-start gap-3 text-gray-700 leading-relaxed">
+                  <span class={`mt-2 h-1.5 w-1.5 rounded-full ${colorStyles[servicio.color].dot} flex-shrink-0`}></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        ))}
 
-      </div>
-
-      <!-- BOTONES -->
-      <button id="prevServicios" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white px-3 py-2 shadow rounded-full z-10">‹</button>
-      <button id="nextServicios" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-3 py-2 shadow rounded-full z-10">›</button>
-
+        </div>
+      ))}
     </div>
 
   </div>
 </section>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const track = document.getElementById("servicios-track");
-  const originalItems = Array.from(track.children);
-
-  let visible = getVisibleItems();
-  let index = visible;
-
-  function getVisibleItems() {
-    // Siempre 1 tarjeta visible, en cualquier tamaño de pantalla
-    return 1;
-  }
-
-  function setupClones() {
-    track.innerHTML = "";
-    originalItems.forEach(el => track.appendChild(el));
-
-    visible = getVisibleItems();
-
-    const clonesBefore = originalItems.slice(-visible).map(el => el.cloneNode(true));
-    const clonesAfter = originalItems.slice(0, visible).map(el => el.cloneNode(true));
-
-    clonesBefore.forEach(clone => track.prepend(clone));
-    clonesAfter.forEach(clone => track.appendChild(clone));
-
-    index = visible;
-    updateCarousel(false);
-  }
-
-  function updateCarousel(animate = true) {
-    const percentage = 100 / visible;
-    track.style.transition = animate ? "transform 0.5s" : "none";
-    track.style.transform = `translateX(-${index * percentage}%)`;
-  }
-
-  function nextSlide() {
-    index++;
-    updateCarousel();
-
-    if (index >= track.children.length - visible) {
-      setTimeout(() => {
-        index = visible;
-        updateCarousel(false);
-      }, 500);
-    }
-  }
-
-  function prevSlide() {
-    index--;
-    updateCarousel();
-
-    if (index <= 0) {
-      setTimeout(() => {
-        index = track.children.length - (visible * 2);
-        updateCarousel(false);
-      }, 500);
-    }
-  }
-
-  document.getElementById("nextServicios").onclick = nextSlide;
-  document.getElementById("prevServicios").onclick = prevSlide;
-
-  // 🔥 ACORDEÓN (FUNCIONA CON CLONES)
-  document.addEventListener("click", (e) => {
-    const header = e.target.closest(".servicio-header");
-    if (!header) return;
-
-    const card = header.closest(".servicio-card");
-    const contenido = card.querySelector(".contenido");
-
-    document.querySelectorAll(".contenido").forEach(el => {
-      if (el !== contenido) el.style.maxHeight = "0px";
-    });
-
-    if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-      contenido.style.maxHeight = "0px";
-    } else {
-      contenido.style.maxHeight = contenido.scrollHeight + "px";
-    }
-  });
-
-  // 🔥 INIT
-  setupClones();
-
-  // 🔥 RESPONSIVE FIX
-  window.addEventListener("resize", () => {
-    setupClones();
-  });
-
-});
-</script>
