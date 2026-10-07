@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
 export async function getStaticPaths() {
   return [
     { params: { slug: 'puente-atlantico' } },
@@ -11,11 +12,20 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params;
 
-// 🔥 Base de datos simulada
 const proyectos = {
   "puente-atlantico": {
     titulo: "Inspección de cubiertas y terrazas",
-    descripcion: "Realizamos inspecciones detalladas de cubiertas mediante tecnología aérea y análisis especializado, identificando filtraciones, deterioro de materiales, deformaciones estructurales y puntos críticos sin necesidad de intervenir la edificación ni exponer al personal a trabajos en altura. Cada informe es respaldado por nuestro equipo técnico multidisciplinario, que traduce los hallazgos en recomendaciones claras de mantenimiento o reparación. Anticiparse a una falla en la cubierta significa proteger la inversión, la operación y la seguridad de quienes ocupan el inmueble.",
+    categoria: "Tecnología aérea",
+    resumen: "Detectamos fallas en cubiertas sin intervenir la edificación ni exponer personal a trabajos en altura.",
+    parrafos: [
+      "Realizamos inspecciones detalladas de cubiertas mediante tecnología aérea y análisis especializado, identificando filtraciones, deterioro de materiales, deformaciones estructurales y puntos críticos sin necesidad de intervenir la edificación ni exponer al personal a trabajos en altura.",
+      "Cada informe es respaldado por nuestro equipo técnico multidisciplinario, que traduce los hallazgos en recomendaciones claras de mantenimiento o reparación.",
+      "Anticiparse a una falla en la cubierta significa proteger la inversión, la operación y la seguridad de quienes ocupan el inmueble.",
+    ],
+    titulo_lista: "Qué identificamos",
+    puntos: ["Filtraciones", "Deterioro de materiales", "Deformaciones estructurales", "Puntos críticos"],
+    beneficios: ["Sin intervenir la edificación", "Sin trabajos en altura", "Informe con recomendaciones claras"],
+    portada: "https://spar2099.sirv.com/pimat/tejado%20(2).jpeg",
     imagenes: [
       "https://spar2099.sirv.com/pimat/tejado%20(2).jpeg",
       "https://spar2099.sirv.com/pimat/tejado%20(1).jpeg",
@@ -26,7 +36,17 @@ const proyectos = {
   },
   "planta-solar": {
     titulo: "Levantamientos topográficos",
-    descripcion: "Ejecutamos levantamientos topográficos con equipos de alta precisión y metodologías ajustadas a las exigencias de cada proyecto, entregando información confiable sobre relieve, linderos, niveles y elementos existentes en el terreno. Este insumo es la base sobre la que se construyen los diseños, los cálculos de volúmenes y la planificación de obra. Contamos con profesionales calificados en topografía e ingeniería que garantizan datos verificables y listos para la toma de decisiones.",
+    categoria: "Topografía",
+    resumen: "Información confiable del terreno, base para diseños, cálculo de volúmenes y planificación de obra.",
+    parrafos: [
+      "Ejecutamos levantamientos topográficos con equipos de alta precisión y metodologías ajustadas a las exigencias de cada proyecto, entregando información confiable sobre relieve, linderos, niveles y elementos existentes en el terreno.",
+      "Este insumo es la base sobre la que se construyen los diseños, los cálculos de volúmenes y la planificación de obra.",
+      "Contamos con profesionales calificados en topografía e ingeniería que garantizan datos verificables y listos para la toma de decisiones.",
+    ],
+    titulo_lista: "Qué levantamos",
+    puntos: ["Relieve", "Linderos", "Niveles", "Elementos existentes"],
+    beneficios: ["Equipos de alta precisión", "Datos verificables", "Listos para la toma de decisiones"],
+    portada: "https://spar2099.sirv.com/pimat/topografia%20(3).jpeg",
     imagenes: [
       "https://spar2099.sirv.com/pimat/topografia%20(3).jpeg",
       "https://spar2099.sirv.com/pimat/topografia%20(2).jpeg",
@@ -35,77 +55,151 @@ const proyectos = {
   },
   "metro-linea-7": {
     titulo: "Modelación 3D",
-    descripcion: "Transformamos la información capturada en campo en modelos tridimensionales precisos que permiten visualizar, medir y analizar un proyecto antes de su ejecución. La modelación 3D facilita la detección temprana de interferencias, optimiza recursos y mejora la comunicación entre todos los actores involucrados. Nuestro equipo integra las áreas de ingeniería, arquitectura y geomática para entregar modelos útiles en cada etapa del ciclo del proyecto.",
-    // ⚠️ Recomendado: convierte estos .avi a .mp4 (H.264) para que se reproduzcan en el navegador.
+    categoria: "Geomática e ingeniería",
+    resumen: "Modelos tridimensionales precisos para visualizar, medir y analizar un proyecto antes de ejecutarlo.",
+    parrafos: [
+      "Transformamos la información capturada en campo en modelos tridimensionales precisos que permiten visualizar, medir y analizar un proyecto antes de su ejecución.",
+      "La modelación 3D facilita la detección temprana de interferencias, optimiza recursos y mejora la comunicación entre todos los actores involucrados.",
+      "Nuestro equipo integra las áreas de ingeniería, arquitectura y geomática para entregar modelos útiles en cada etapa del ciclo del proyecto.",
+    ],
+    titulo_lista: "Qué permite el modelo",
+    puntos: ["Visualizar", "Medir", "Analizar", "Detectar interferencias"],
+    beneficios: ["Optimiza recursos", "Mejor comunicación entre actores", "Útil en todo el ciclo del proyecto"],
+    portada: "https://spar2099.sirv.com/pimat/Captura%20de%20pantalla%202026-08-05%20200624.png",
     imagenes: [
       "https://spar2099.sirv.com/pimat/Torre_Horizontal.mp4",
       "https://spar2099.sirv.com/pimat/Torre_Vertical.mp4",
     ],
-  }
+  },
 };
 
 const proyecto = proyectos[slug];
+const base = import.meta.env.BASE_URL;
+const glass = "bg-black/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.25)]";
 
-// Detecta si cada archivo es video o imagen según su extensión
 const extensionesVideo = ["mp4", "webm", "mov", "avi", "ogg"];
-
 function esVideo(url: string) {
   const limpio = url.split("?")[0].toLowerCase();
-  const ext = limpio.substring(limpio.lastIndexOf(".") + 1);
-  return extensionesVideo.includes(ext);
+  return extensionesVideo.includes(limpio.substring(limpio.lastIndexOf(".") + 1));
 }
+
+const otros = Object.entries(proyectos)
+  .filter(([s]) => s !== slug)
+  .map(([s, p]) => ({ slug: s, titulo: p.titulo, categoria: p.categoria, imagen: p.portada }));
 ---
 
 <Layout title={proyecto.titulo}>
   <Header />
 
-  <!-- HERO estilo Valorant -->
-  <section class="pt-32 pb-20 bg-aecom-gray text-white min-h-screen flex items-center">
-    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+  <!-- HERO (igual que Proyectos / Quiénes Somos) -->
+  <section class="pt-32 pb-28 bg-aecom-orange">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white max-w-4xl">
+      <a href={`${base}proyectos`} class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium mb-6 transition-colors">
+        ← Volver a Nuestros Proyectos
+      </a>
+      <p class="inline-block bg-white/20 px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-widest mb-4 animate-fade-in">
+        {proyecto.categoria}
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold animate-fade-in">{proyecto.titulo}</h1>
+      <p class="mt-4 text-lg text-white/90 animate-fade-in">{proyecto.resumen}</p>
+    </div>
+  </section>
 
-      <div>
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
-          {proyecto.titulo}
-        </h1>
-        <p class="lg:pr-10 text-justify leading-7 text-gray-200 text-[16.5px] space-y-4">
-          {proyecto.descripcion}
-        </p>
-        <button 
-          onclick="history.back()" 
-          class="mt-8 bg-white text-black px-6 py-2 rounded-md font-semibold hover:bg-gray-200 transition">
-          ← Volver
-        </button>
-      </div>
+  <section class="pb-20 -mt-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
 
-      <!-- 🔥 CARRUSEL DE IMÁGENES Y VIDEOS -->
-      <div class="relative overflow-hidden rounded-xl shadow-lg bg-white">
-
-        <div id="proyecto-track" class="flex transition-transform duration-500">
-          {proyecto.imagenes.map((media) => (
-            <div class="w-full flex-shrink-0">
-              <div class="w-full h-64 sm:h-80 lg:h-96 relative bg-black">
+      <!-- GALERÍA -->
+      <div class={`${glass} p-3 sm:p-4 animate-slide-up`} id="galeria">
+        <div class="relative overflow-hidden rounded-xl bg-black">
+          <div id="g-track" class="flex transition-transform duration-500 ease-out">
+            {proyecto.imagenes.map((media) => (
+              <div class="w-full flex-shrink-0 h-64 sm:h-96 lg:h-[30rem] bg-black">
                 {esVideo(media) ? (
-                  <video
-                    src={media}
-                    class="w-full h-full object-contain"
-                    controls
-                    playsinline
-                  />
+                  <video src={media} class="w-full h-full object-contain" controls playsinline preload="metadata" />
                 ) : (
-                  <img
-                    src={media}
-                    class="w-full h-full object-cover"
-                  />
+                  <img src={media} alt={proyecto.titulo} class="w-full h-full object-cover" loading="lazy" />
                 )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {proyecto.imagenes.length > 1 && (
+            <>
+              <button id="g-prev" aria-label="Anterior" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-aecom-orange hover:text-white text-aecom-dark shadow transition z-10">‹</button>
+              <button id="g-next" aria-label="Siguiente" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-aecom-orange hover:text-white text-aecom-dark shadow transition z-10">›</button>
+              <span id="g-count" class="absolute bottom-3 right-3 bg-black/60 text-white text-xs font-semibold px-3 py-1 rounded-full z-10"></span>
+            </>
+          )}
         </div>
 
-        <!-- BOTONES -->
-        <button id="prevProyecto" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2 shadow rounded-full z-10">‹</button>
-        <button id="nextProyecto" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black px-3 py-2 shadow rounded-full z-10">›</button>
+        {proyecto.imagenes.length > 1 && (
+          <div class="mt-3 flex gap-2 overflow-x-auto pb-1">
+            {proyecto.imagenes.map((media, i) => (
+              <button data-thumb={i} aria-label={`Ver ${i + 1}`}
+                class="thumb flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 rounded-lg overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition bg-aecom-dark">
+                {esVideo(media) ? (
+                  <span class="flex items-center justify-center w-full h-full text-white text-xl">▶</span>
+                ) : (
+                  <img src={media} alt="" class="w-full h-full object-cover" loading="lazy" />
+                )}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
+      <!-- DESCRIPCIÓN + LATERAL -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
+
+        <div class={`${glass} p-8 md:p-10 animate-slide-up`}>
+          <h2 class="text-3xl font-bold text-aecom-blue mb-2">Sobre el proyecto</h2>
+          <div class="w-16 h-1 bg-aecom-orange rounded mb-6"></div>
+          <div class="space-y-4 text-aecom-dark text-lg leading-relaxed text-justify">
+            {proyecto.parrafos.map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+
+        <aside class="space-y-6 lg:sticky lg:top-28 animate-slide-up">
+          <div class={`${glass} p-6`}>
+            <h3 class="text-xl font-bold text-aecom-blue mb-4">{proyecto.titulo_lista}</h3>
+            <div class="flex flex-wrap gap-2">
+              {proyecto.puntos.map((p) => (
+                <span class="bg-aecom-blue text-white px-4 py-1.5 rounded-full text-sm font-medium">{p}</span>
+              ))}
+            </div>
+            <ul class="mt-5 space-y-2 text-aecom-dark">
+              {proyecto.beneficios.map((b) => (
+                <li class="flex gap-2"><span class="text-aecom-orange font-bold">✓</span>{b}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-aecom-blue text-white rounded-2xl p-6 shadow-lg text-center">
+            <h3 class="text-xl font-bold mb-2">¿Necesitas este servicio?</h3>
+            <p class="text-white/80 text-sm mb-4">Cuéntanos tu proyecto y te preparamos una cotización.</p>
+            <a href={`${base}contacto`} class="inline-block w-full bg-aecom-orange text-white px-6 py-2 rounded-md hover:bg-aecom-lightorange transition-colors duration-300 font-semibold">
+              Cotizar Proyecto
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- OTROS PROYECTOS -->
+      <div>
+        <h2 class="text-3xl font-bold text-center mb-8">Otros proyectos</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          {otros.map((o) => (
+            <a href={`${base}proyectos/${o.slug}`} class="group block overflow-hidden rounded-xl shadow-lg bg-white">
+              <div class="h-48 overflow-hidden">
+                <img src={o.imagen} alt={o.titulo} class="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" />
+              </div>
+              <div class="p-4">
+                <span class="text-xs text-aecom-orange font-semibold uppercase tracking-wider">{o.categoria}</span>
+                <h3 class="text-lg font-bold mt-1">{o.titulo}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
 
     </div>
@@ -115,70 +209,37 @@ function esVideo(url: string) {
 </Layout>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("g-track");
+  if (track) {
+    const total = track.children.length;
+    const thumbs = Array.from(document.querySelectorAll<HTMLElement>(".thumb"));
+    const counter = document.getElementById("g-count");
+    let i = 0;
 
-  const track = document.getElementById("proyecto-track");
-  if (!track) return;
-
-  const originalItems = Array.from(track.children);
-  const visible = 1;
-  let index = visible;
-
-  function setupClones() {
-    track.innerHTML = "";
-    originalItems.forEach(el => track.appendChild(el));
-
-    const clonesBefore = originalItems.slice(-visible).map(el => el.cloneNode(true));
-    const clonesAfter = originalItems.slice(0, visible).map(el => el.cloneNode(true));
-
-    clonesBefore.forEach(clone => track.prepend(clone));
-    clonesAfter.forEach(clone => track.appendChild(clone));
-
-    index = visible;
-    updateCarousel(false);
-  }
-
-  function updateCarousel(animate = true) {
-    const percentage = 100 / visible;
-    track.style.transition = animate ? "transform 0.5s" : "none";
-    track.style.transform = `translateX(-${index * percentage}%)`;
-
-    // Pausar todos los videos al cambiar de slide
-    track.querySelectorAll("video").forEach((v) => v.pause());
-  }
-
-  function nextSlide() {
-    index++;
-    updateCarousel();
-
-    if (index >= track.children.length - visible) {
-      setTimeout(() => {
-        index = visible;
-        updateCarousel(false);
-      }, 500);
+    function go(n: number) {
+      i = (n + total) % total;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      track.querySelectorAll("video").forEach((v) => v.pause());
+      if (counter) counter.textContent = `${i + 1} / ${total}`;
+      thumbs.forEach((t, k) => {
+        t.classList.toggle("border-aecom-orange", k === i);
+        t.classList.toggle("opacity-100", k === i);
+        t.classList.toggle("border-transparent", k !== i);
+      });
+      thumbs[i]?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
     }
+
+    document.getElementById("g-prev")?.addEventListener("click", () => go(i - 1));
+    document.getElementById("g-next")?.addEventListener("click", () => go(i + 1));
+    thumbs.forEach((t) => t.addEventListener("click", () => go(Number(t.dataset.thumb))));
+
+    let x0 = 0;
+    track.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+    track.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1));
+    });
+
+    go(0);
   }
-
-  function prevSlide() {
-    index--;
-    updateCarousel();
-
-    if (index <= 0) {
-      setTimeout(() => {
-        index = track.children.length - (visible * 2);
-        updateCarousel(false);
-      }, 500);
-    }
-  }
-
-  document.getElementById("nextProyecto").onclick = nextSlide;
-  document.getElementById("prevProyecto").onclick = prevSlide;
-
-  setupClones();
-
-  window.addEventListener("resize", () => {
-    setupClones();
-  });
-
-});
 </script>
